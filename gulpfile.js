@@ -12,6 +12,8 @@
 	 
 	// Подключаем модули gulp-sass 
 	const sass = require('gulp-sass');
+	
+	const rigger = require('gulp-rigger');
  
 	// Подключаем Autoprefixer
 	const autoprefixer = require('gulp-autoprefixer');
@@ -47,6 +49,12 @@
 		.pipe(cleancss( { level: { 1: { specialComments: 0 } }/* , format: 'beautify' */ } )) // Минифицируем стили
 		.pipe(dest('app/css/')) // Выгрузим результат в папку "app/css/"
 	}
+	
+	function html() {
+		return src('app/html/*.html') 
+		.pipe(rigger())
+		.pipe(dest('app/'))
+	}
 	 
 	function images() {
 		return src('app/images/src/**/*') // Берём все изображения из папки источника
@@ -65,7 +73,7 @@
 			'app/js/**/*.min.js',
 			'app/fonts/**/*',
 			'app/images/dest/**/*',
-			'app/**/*.html',
+			'app/*.html',
 			], { base: 'app' }) // Параметр "base" сохраняет структуру проекта при копировании
 		.pipe(dest('dist')) // Выгружаем в папку с финальной сборкой
 	}
@@ -88,7 +96,7 @@
 	exports.cleanimg = cleanimg;
 	 
 	// Создаём новый таск "build", который последовательно выполняет нужные операции
-	exports.build = series(cleandist, styles, scripts, images, buildcopy);
+	exports.build = series(html,cleandist, styles, scripts, images, buildcopy);
 	 
 	// Экспортируем дефолтный таск с нужным набором функций
-	exports.default = parallel(styles, scripts, buildcopy);
+	exports.default = parallel(html, styles, scripts, buildcopy);
