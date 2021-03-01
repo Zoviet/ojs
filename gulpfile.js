@@ -34,7 +34,8 @@
 	function scripts() {
 		return src([ // Берём файлы из источников
 			'node_modules/jquery/dist/jquery.min.js', 
-			'app/js/main.js', // Пользовательские скрипты, использующие библиотеку, должны быть подключены в конце
+			'app/js/jquery.anoslide.js',
+			'app/js/main.js', 			
 			])
 		.pipe(concat('app.min.js')) // Конкатенируем в один файл
 		.pipe(uglify()) // Сжимаем JavaScript

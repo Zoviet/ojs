@@ -1,5 +1,9 @@
 
-$blue: hsl(229, 33%, 33%);
+$blue: #800080;
+$blue-light: lighten($blue, 0);
+
+$menu-item-hover-background-color: $blue-light;
+$menu-item-hover-color: $white;
 
 .has-text-facebook {
 

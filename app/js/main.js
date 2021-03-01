@@ -1,5 +1,14 @@
 'use strict';
 
+	$('.carousel ul').anoSlide(
+			{
+				items: 1,
+				speed: 500,
+				prev: '.column a.prev',
+				next: '.column a.next[data-next-mixed]',
+				lazy: true
+			})
+
 function getAll(selector) {
   return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
 }
