@@ -1,5 +1,7 @@
 'use strict';
 
+$(".sticky").stick_in_parent();
+
 	$('.carousel ul').anoSlide(
 			{
 				items: 1,
@@ -132,3 +134,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+

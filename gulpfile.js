@@ -35,6 +35,7 @@
 		return src([ // Берём файлы из источников
 			'node_modules/jquery/dist/jquery.min.js', 
 			'app/js/jquery.anoslide.js',
+			'app/js/jquery.sticky-kit.min.js',
 			'app/js/main.js', 			
 			])
 		.pipe(concat('app.min.js')) // Конкатенируем в один файл
